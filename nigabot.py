@@ -2,15 +2,18 @@
 
 import asyncio
 from telebot.async_telebot import AsyncTeleBot
-from telebot.types import BotCommand
+from telebot.types import BotCommand, BotCommandScopeAllGroupChats
 bot = AsyncTeleBot('7840901433:AAFYuhloNSnKO0lAOhvd_pdRaQqMiBFawRs')
 
+
 async def bot_commands():
-    commands = [BotCommand("schedule", "ℹ️ Показать расписание"),
-                BotCommand("teacher", "ℹ️ Преподователи"),
-                BotCommand("git", "ℹ️ git"),
-                BotCommand("start", "ℹ️ Помощь")]
-    await bot.set_my_commands(commands)
+    commands = [
+        BotCommand("schedule", "ℹ️ Показать расписание"),
+        BotCommand("teacher", "ℹ️ Преподователи"),
+        BotCommand("git", "ℹ️ git"),
+        BotCommand("start", "ℹ️ Помощь")]
+    await bot.set_my_commands(commands, scope=None)
+    await bot.set_my_commands(commands, scope=BotCommandScopeAllGroupChats())
 
 
 @bot.message_handler(commands=['start'])
@@ -39,12 +42,10 @@ async def send_teacher(message):
     await bot.reply_to(message, text)
 
 
-@bot.message_handler(func=lambda message: True)
-async def echo_message(message):
-    await bot.reply_to(message, message.text)
-
 async def main():
     await bot_commands()
     await bot.polling()
 
+
+asyncio.run(main())
 asyncio.run(main())
