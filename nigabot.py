@@ -2,7 +2,6 @@
 
 import asyncio
 from telebot.async_telebot import AsyncTeleBot
-
 from telebot.types import BotCommand, BotCommandScopeAllGroupChats
 bot = AsyncTeleBot('7840901433:AAFYuhloNSnKO0lAOhvd_pdRaQqMiBFawRs')
 
