@@ -21,11 +21,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
+          pip uninstall -y pyTelegramBotAPI
+          pip install pyTelegramBotAPI==4.15.4
           pip install -r requirements.txt
-          pip install pyTelegramBotAPI
 
       - name: Show installed packages
-        run: pip list  # Проверяем, установился ли aiohttp
+        run: pip list  
 
       - name: Run bot
         env:
