@@ -22,7 +22,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install aiohttp  # Добавляем установку aiohttp
+          pip install aiohttp  # Принудительная установка aiohttp
+
+      - name: Show installed packages
+        run: pip list  # Проверяем, установился ли aiohttp
 
       - name: Run bot
         env:
