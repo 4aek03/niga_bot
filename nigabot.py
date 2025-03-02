@@ -47,7 +47,5 @@ async def main():
     await bot_commands()
     await bot.polling()
 
-
-asyncio.run(main())
 asyncio.run(main())
 #дай денег
